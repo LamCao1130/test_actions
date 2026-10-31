@@ -13,7 +13,13 @@ jobs:
 
       - name: check readme file
         id: check
-        run: ls -la
+        run: |
+          ls -la
+          test -f readme.md
+          echo "status=success" >> $GITHUB_OUTPUT
+      - name: show echo
+        run: echo ${{ steps.check.outputs.status}}
+
   # job_build:
   #   runs-on: ubuntu-latest
   # job_deploy:
