@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  job_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7.0.1
+
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@v3.99.7
+
+      - name: Check Dockerfile file
+        run: test -f Dockerfile
+
+      - name: Test
+        run: ls -la
