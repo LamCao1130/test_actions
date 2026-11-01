@@ -29,5 +29,9 @@ jobs:
       - name: Connect Server
         run: |
           ssh ${{secrets.SSH_USER}}@${{secrets.SSH_IP}} "
-            ls -la
+            set -e
+
+            cd /home/ubuntu/devops_05/go_gin_be
+            ls -la 
+            test -f .env
           "
